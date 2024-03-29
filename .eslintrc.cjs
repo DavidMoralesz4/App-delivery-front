@@ -5,37 +5,37 @@ module.exports = {
   },
   settings: {
     react: {
-      version: 'detect'
+      version: "detect"
     }
   },
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'eslint-config-prettier'
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react/tsx-runtime",
+    "eslint-config-prettier"
   ],
   overrides: [
     {
       env: {
         node: true
       },
-      files: ['.eslintrc.{js,cjs}'],
+      files: [".eslintrc.{js,cjs}"],
       parserOptions: {
-        sourceType: 'script'
+        sourceType: "script"
       }
     }
   ],
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module'
+    ecmaVersion: "latest",
+    sourceType: "module"
   },
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: ["@typescript-eslint", "react"],
   rules: {
-    indent: ['error', 'tab'],
-    'linebreak-style': ['error', 'windows'],
-    quotes: ['error', 'double'],
-    semi: ['error', 'always']
+    indent: ["error", "tab"],
+    "linebreak-style": ["error", "windows"],
+    quotes: ["error", "double"],
+    semi: ["error", "always"]
   }
-}
+};
