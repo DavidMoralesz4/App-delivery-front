@@ -6,14 +6,9 @@ type RegisterRestaurantProps = {
 }
 
 function RegisterRestaurant( {handleSubmit}: RegisterRestaurantProps) {
-	const lowerCaseRegex = /[a-z]/g;
-	const upperCaseRegex = /[A-Z]/g;
 	const noSpaceAtStartRegex = /^\S/g;
 	const noSpaceEndingRegex = /\S$/g;
-	const noSpacesRegex = /^\S*$/g;
-	const numberRegex = /[0-9]/g;
 	const noNumberRegex = /^\D*$/g;
-	const specialCharacterRegex = /[!@#$%^&_*-]/g;
 	const noSpecialCharacterRegex = /^[a-zA-ZáéíóúñÑ\s0-9]*$/g;
 	const phoneRegex = /^\d{10}$/;
 	const zipCodeRegex = /^\d{4}$/;
