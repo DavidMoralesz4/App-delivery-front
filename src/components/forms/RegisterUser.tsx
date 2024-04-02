@@ -63,9 +63,11 @@ function RegisterUser( {handleSubmit}: RegisterUserProps) {
 		userZipCode: Yup.string()
 			.required("Debes completar este campo")
 			.matches(zipCodeRegex, "Debe tener 4 dígitos"),
+			.matches(zipCodeRegex, "Debe tener 4 dígitos"),
 		
 		userPhoneNumber: Yup.string()
 			.required("Debes completar este campo")
+			.matches(phoneRegex, "Debe tener 10 dígitos"),		
 			.matches(phoneRegex, "Debe tener 10 dígitos"),		
 
 		userPassword: Yup.string()
