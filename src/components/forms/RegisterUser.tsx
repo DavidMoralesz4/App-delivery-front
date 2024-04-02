@@ -15,8 +15,8 @@ function RegisterUser( {handleSubmit}: RegisterUserProps) {
 	const noNumberRegex = /^\D*$/g;
 	const specialCharacterRegex = /[!@#$%^&_*-]/g;
 	const noSpecialCharacterRegex = /^[a-zA-ZáéíóúñÑ\s0-9]*$/g;
-	const phoneRegex = /^[+]\d{2}\s\d{9}$/;
-	const zipCodeRegex = /^[A-Za-z]{1}(\d{1}|\d{4})[A-Za-z]{3}$/;
+	const phoneRegex = /^\d{10}$/;
+	const zipCodeRegex = /^\d{4}$/;
 
 
 	const initialValues = {
