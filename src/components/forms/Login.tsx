@@ -1,4 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { useRef } from "react";
 import *  as  Yup from "yup";
 
 
@@ -7,13 +8,14 @@ type LoginProps = {
 }
 
 function Login( {handleSubmit}: LoginProps) {
+	const passwordElement = useRef<HTMLInputElement>(null);
 
-	
+	//CONFIGURACIÓN PARA YUP Y FORMIK - COMIENZO
+
 	const initialValues = {
 		userEmail: "",
 		userPassword: "",
 	};
-
 	
 	const registerSchema = Yup.object({
 		userEmail: Yup.string()
@@ -27,6 +29,20 @@ function Login( {handleSubmit}: LoginProps) {
 		.min(8, "Al menos 8 caracteres"),
 	});
 
+	//CONFIGURACIÓN PARA YUP Y FORMIK - FIN
+
+
+	// Cambia la visibilidad del password
+
+	function setPasswordVisibility () {
+		let passwordTypeAttribute = (passwordElement.current as HTMLInputElement).type;
+
+		if (passwordTypeAttribute === "password") {
+			passwordTypeAttribute = "text";
+		} else {
+			passwordTypeAttribute = "password";
+		}
+	}
 
 
 	return (
@@ -47,7 +63,10 @@ function Login( {handleSubmit}: LoginProps) {
 
 						<div className="">
 							<label htmlFor="userPassword">Contraseña</label>
-							<Field type="password" id="userPassword" name="userPassword" placeholder="" className="" />
+							<Field type="password" id="userPassword" name="userPassword" placeholder="" className="" ref={passwordElement} />
+							<button type="button" onClick={setPasswordVisibility}>
+								Ver
+							</button>
 							<ErrorMessage name="userPassword" >
 								{errorMsg => <p className="">{errorMsg}</p>}
 							</ErrorMessage>
