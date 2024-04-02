@@ -87,99 +87,97 @@ function RegisterUser( {handleSubmit}: RegisterUserProps) {
 
 
 	return (
-		<>
-			<div className="">
+		<div className="">
 
-				<Formik initialValues={initialValues} validationSchema={registerSchema} onSubmit={handleSubmit}>
-					<Form name="registerUserForm" action="" encType="multipart/form-data" className="">
+			<Formik initialValues={initialValues} validationSchema={registerSchema} onSubmit={handleSubmit}>
+				<Form name="registerUserForm" action="" encType="multipart/form-data" className="">
+					<div className="">
+
+
 						<div className="">
+							<label htmlFor="userName">Nombre</label>
+							<Field type="text" id="userName" name="userName" placeholder="" className="" />
+							<ErrorMessage name="userName" >
+								{errorMsg => <p className="">{errorMsg}</p>}
+							</ErrorMessage>
+						</div>
 
 
-							<div className="">
-								<label htmlFor="userName">Nombre</label>
-								<Field type="text" id="userName" name="userName" placeholder="" className="" />
-								<ErrorMessage name="userName" >
-									{errorMsg => <p className="">{errorMsg}</p>}
-								</ErrorMessage>
-							</div>
+						<div className="">
+							<label htmlFor="userLastName">Apellidos</label>
+							<Field type="text" id="userLastName" name="userLastName" placeholder="" className="" />
+							<ErrorMessage name="userLastName" >
+								{errorMsg => <p className="">{errorMsg}</p>}
+							</ErrorMessage>
+						</div>
+
+						
+						<div className="">
+							<label htmlFor="userAddress">Dirección</label>
+							<Field type="text" id="userAddress" name="userAddress" placeholder="" className="" />
+							<ErrorMessage name="userAddress" >
+								{errorMsg => <p className="">{errorMsg}</p>}
+							</ErrorMessage>
+						</div>
 
 
-							<div className="">
-								<label htmlFor="userLastName">Apellidos</label>
-								<Field type="text" id="userLastName" name="userLastName" placeholder="" className="" />
-								<ErrorMessage name="userLastName" >
-									{errorMsg => <p className="">{errorMsg}</p>}
-								</ErrorMessage>
-							</div>
+						<div className="">
+							<label htmlFor="userZipCode">Código Postal</label>
+							<Field type="string" id="userZipCode" name="userZipCode" placeholder="" className="" />
+							<ErrorMessage name="userZipCode" >
+								{errorMsg => <p className="">{errorMsg}</p>}
+							</ErrorMessage>
+						</div>
+
+
+						<div className="">
+							<label htmlFor="userPhoneNumber">Teléfono</label>
+							<Field type="tel" id="userPhoneNumber" name="userPhoneNumber" placeholder="" className="" />
+							<ErrorMessage name="userPhoneNumber" >
+								{errorMsg => <p className="">{errorMsg}</p>}
+							</ErrorMessage>
+						</div>
+
+
+						<div className="">
+							<label htmlFor="userEmail">Correo Electrónico</label>
+							<Field type="email" id="userEmail" name="userEmail" placeholder="" className="" />
+							<ErrorMessage name="userEmail" >
+								{errorMsg => <p className="">{errorMsg}</p>}
+							</ErrorMessage>
+						</div>
+
+
+						<div className="">
+							<label htmlFor="userPassword">Contraseña</label>
+							<Field type="password" id="userPassword" name="userPassword" placeholder="" className="" />
+							<ErrorMessage name="userPassword" >
+								{errorMsg => <p className="">{errorMsg}</p>}
+							</ErrorMessage>
+						</div>
+
+
+						<div className="">
+							<label htmlFor="userPasswordConfirm">Confirma contraseña</label>
+							<Field type="password" id="userPasswordConfirm" name="userPasswordConfirm" placeholder="" className="" />
+							<ErrorMessage name="userPasswordConfirm" >
+								{errorMsg => <p className="">{errorMsg}</p>}
+							</ErrorMessage>
+						</div>
 
 							
-							<div className="">
-								<label htmlFor="userAddress">Dirección</label>
-								<Field type="text" id="userAddress" name="userAddress" placeholder="" className="" />
-								<ErrorMessage name="userAddress" >
-									{errorMsg => <p className="">{errorMsg}</p>}
-								</ErrorMessage>
-							</div>
+						<button 
+							className=""
+							type="submit"
+						>
+							Resgistrarme
+						</button>
 
+					</div>
+				</Form>
+			</Formik>
 
-							<div className="">
-								<label htmlFor="userZipCode">Código Postal</label>
-								<Field type="string" id="userZipCode" name="userZipCode" placeholder="" className="" />
-								<ErrorMessage name="userZipCode" >
-									{errorMsg => <p className="">{errorMsg}</p>}
-								</ErrorMessage>
-							</div>
-
-
-							<div className="">
-								<label htmlFor="userPhoneNumber">Teléfono</label>
-								<Field type="tel" id="userPhoneNumber" name="userPhoneNumber" placeholder="" className="" />
-								<ErrorMessage name="userPhoneNumber" >
-									{errorMsg => <p className="">{errorMsg}</p>}
-								</ErrorMessage>
-							</div>
-
-
-							<div className="">
-								<label htmlFor="userEmail">Correo Electrónico</label>
-								<Field type="email" id="userEmail" name="userEmail" placeholder="" className="" />
-								<ErrorMessage name="userEmail" >
-									{errorMsg => <p className="">{errorMsg}</p>}
-								</ErrorMessage>
-							</div>
-
-
-							<div className="">
-								<label htmlFor="userPassword">Contraseña</label>
-								<Field type="password" id="userPassword" name="userPassword" placeholder="" className="" />
-								<ErrorMessage name="userPassword" >
-									{errorMsg => <p className="">{errorMsg}</p>}
-								</ErrorMessage>
-							</div>
-
-
-							<div className="">
-								<label htmlFor="userPasswordConfirm">Confirma contraseña</label>
-								<Field type="password" id="userPasswordConfirm" name="userPasswordConfirm" placeholder="" className="" />
-								<ErrorMessage name="userPasswordConfirm" >
-									{errorMsg => <p className="">{errorMsg}</p>}
-								</ErrorMessage>
-							</div>
-
-								
-							<button 
-								className=""
-								type="submit"
-							>
-								Resgistrarme
-							</button>
-
-						</div>
-					</Form>
-				</Formik>
-
-			</div>
-		</>
+		</div>
 	);
 }
 
