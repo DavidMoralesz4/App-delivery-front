@@ -47,11 +47,11 @@ function RegisterRestaurant( {handleSubmit}: RegisterRestaurantProps) {
 
 		restaurantZipCode: Yup.string()
 			.required("Debes completar este campo")
-			.matches(zipCodeRegex, "El formato debe ser A0000AAA"),
+			.matches(zipCodeRegex, "Debe tener 4 dígitos"),
 		
 		restaurantPhoneNumber: Yup.string()
 			.required("Debes completar este campo")
-			.matches(phoneRegex, "El formato debe ser +00 000000000"),		
+			.matches(phoneRegex, "Debe tener 10 dígitos"),		
 
 		restaurantImg: Yup.string()
 			.required("Debes completar este campo"),
@@ -94,7 +94,7 @@ function RegisterRestaurant( {handleSubmit}: RegisterRestaurantProps) {
 
 							<div className="">
 								<label htmlFor="restaurantZipCode">Código Postal</label>
-								<Field type="number" id="restaurantZipCode" name="restaurantZipCode" placeholder="" className="" />
+								<Field type="string" id="restaurantZipCode" name="restaurantZipCode" placeholder="" className="" />
 								<ErrorMessage name="restaurantZipCode" >
 									{errorMsg => <p className="">{errorMsg}</p>}
 								</ErrorMessage>

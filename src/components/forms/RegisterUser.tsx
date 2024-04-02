@@ -122,7 +122,7 @@ function RegisterUser( {handleSubmit}: RegisterUserProps) {
 
 							<div className="">
 								<label htmlFor="userZipCode">Código Postal</label>
-								<Field type="number" id="userZipCode" name="userZipCode" placeholder="" className="" />
+								<Field type="string" id="userZipCode" name="userZipCode" placeholder="" className="" />
 								<ErrorMessage name="userZipCode" >
 									{errorMsg => <p className="">{errorMsg}</p>}
 								</ErrorMessage>
