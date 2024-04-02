@@ -62,11 +62,11 @@ function RegisterUser( {handleSubmit}: RegisterUserProps) {
 
 		userZipCode: Yup.string()
 			.required("Debes completar este campo")
-			.matches(zipCodeRegex, "El formato debe ser A0000AAA"),
+			.matches(zipCodeRegex, "Debe tener 4 dígitos"),
 		
 		userPhoneNumber: Yup.string()
 			.required("Debes completar este campo")
-			.matches(phoneRegex, "El formato debe ser +00 000000000"),		
+			.matches(phoneRegex, "Debe tener 10 dígitos"),		
 
 		userPassword: Yup.string()
 			.required("Debes completar este campo")
@@ -122,7 +122,7 @@ function RegisterUser( {handleSubmit}: RegisterUserProps) {
 
 							<div className="">
 								<label htmlFor="userZipCode">Código Postal</label>
-								<Field type="text" id="userZipCode" name="userZipCode" placeholder="" className="" />
+								<Field type="number" id="userZipCode" name="userZipCode" placeholder="" className="" />
 								<ErrorMessage name="userZipCode" >
 									{errorMsg => <p className="">{errorMsg}</p>}
 								</ErrorMessage>
