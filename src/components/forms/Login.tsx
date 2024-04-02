@@ -1,5 +1,4 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useRef } from "react";
 import *  as  Yup from "yup";
 
 
@@ -8,7 +7,6 @@ type LoginProps = {
 }
 
 function Login( {handleSubmit}: LoginProps) {
-	const passwordElement = useRef<HTMLInputElement>(null);
 
 	//CONFIGURACIÓN PARA YUP Y FORMIK - COMIENZO
 
@@ -35,12 +33,13 @@ function Login( {handleSubmit}: LoginProps) {
 	// Cambia la visibilidad del password
 
 	function setPasswordVisibility () {
-		let passwordTypeAttribute = (passwordElement.current as HTMLInputElement).type;
+		const passwordElement = document.getElementById("userPassword");
+		let passwordElemTypeAttribute = (passwordElement as HTMLInputElement).type;
 
-		if (passwordTypeAttribute === "password") {
-			passwordTypeAttribute = "text";
+		if (passwordElemTypeAttribute === "password") {
+			passwordElemTypeAttribute = "text";
 		} else {
-			passwordTypeAttribute = "password";
+			passwordElemTypeAttribute = "password";
 		}
 	}
 
@@ -63,8 +62,8 @@ function Login( {handleSubmit}: LoginProps) {
 
 						<div className="">
 							<label htmlFor="userPassword">Contraseña</label>
-							<Field type="password" id="userPassword" name="userPassword" placeholder="" className="" ref={passwordElement} />
-							<button type="button" onClick={setPasswordVisibility}>
+							<Field type="password" id="userPassword" name="userPassword" placeholder="" className="" />
+							<button type="button" onClick={setPasswordVisibility} >
 								Ver
 							</button>
 							<ErrorMessage name="userPassword" >
