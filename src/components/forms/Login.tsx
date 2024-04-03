@@ -1,5 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import *  as  Yup from "yup";
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import { useState } from "react";
 
 
 type LoginProps = {
@@ -7,6 +10,7 @@ type LoginProps = {
 }
 
 function Login( {handleSubmit}: LoginProps) {
+	const [passwordVisible, setPasswordVisible] = useState(false);
 
 	//CONFIGURACIÓN PARA YUP Y FORMIK - COMIENZO
 
@@ -37,9 +41,11 @@ function Login( {handleSubmit}: LoginProps) {
 
 		if (passwordElement.type === "password") {
 			passwordElement.type = "text";
+			setPasswordVisible(true);
 
 		} else {
 			passwordElement.type = "password";
+			setPasswordVisible(false);
 		}
 	}
 
@@ -63,9 +69,21 @@ function Login( {handleSubmit}: LoginProps) {
 						<div className="">
 							<label htmlFor="userPassword">Contraseña</label>
 							<Field type="password" id="userPassword" name="userPassword" placeholder="" className="" />
+
 							<button type="button" onClick={setPasswordVisibility} >
-								Ver
+								
+								{
+									passwordVisible === false
+										? 	(
+												<RemoveRedEyeOutlinedIcon />
+											)
+										:	(
+												<VisibilityOffOutlinedIcon />
+											)
+								}
+
 							</button>
+
 							<ErrorMessage name="userPassword" >
 								{errorMsg => <p className="">{errorMsg}</p>}
 							</ErrorMessage>
