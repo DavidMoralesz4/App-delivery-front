@@ -33,13 +33,13 @@ function Login( {handleSubmit}: LoginProps) {
 	// Cambia la visibilidad del password
 
 	function setPasswordVisibility () {
-		const passwordElement = document.getElementById("userPassword");
-		let passwordElemTypeAttribute = (passwordElement as HTMLInputElement).type;
+		const passwordElement = document.getElementById("userPassword") as HTMLInputElement;
 
-		if (passwordElemTypeAttribute === "password") {
-			passwordElemTypeAttribute = "text";
+		if (passwordElement.type === "password") {
+			passwordElement.type = "text";
+
 		} else {
-			passwordElemTypeAttribute = "password";
+			passwordElement.type = "password";
 		}
 	}
 
