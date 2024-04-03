@@ -32,7 +32,7 @@ function Search( {handleSubmit}: SearchProps) {
 	return (
 		<Formik initialValues={initialValues} validationSchema={registerSchema} onSubmit={handleSubmit}>
 			<Form name="searchBar" action="" encType="multipart/form-data" className="">
-				<div className="flex bg-[#94B447]">
+				<div className="flex">
 
 					<button 
 						className=""
@@ -42,7 +42,7 @@ function Search( {handleSubmit}: SearchProps) {
 					</button>
 
 					<div className="">
-						<Field type="email" id="searchText" name="searchText" placeholder="Buscar" className="" />
+						<Field type="text" id="searchText" name="searchText" placeholder="Buscar" className="" />
 						<ErrorMessage name="searchText" >
 							{errorMsg => <p className="">{errorMsg}</p>}
 						</ErrorMessage>
