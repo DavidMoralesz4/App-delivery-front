@@ -16,9 +16,9 @@ function Home() {
 
 		</main>
 
-		<nav>
+		<footer>
 			
-		</nav>
+		</footer>
 	</>
 	)
 }
