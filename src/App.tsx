@@ -1,10 +1,10 @@
 import "./App.css";
+import RoutesComponent from "./routes/Routes";
 
 function App() {
   return (
     <>
-      <h1>App-Comida</h1>
-      <div></div>
+      <RoutesComponent />
     </>
   );
 }
