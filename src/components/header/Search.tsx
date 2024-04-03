@@ -31,8 +31,8 @@ function Search( {handleSubmit}: SearchProps) {
 
 	return (
 		<Formik initialValues={initialValues} validationSchema={registerSchema} onSubmit={handleSubmit}>
-			<Form name="searchBar" action="" encType="multipart/form-data" className="flex">
-				<div className="">
+			<Form name="searchBar" action="" encType="multipart/form-data" className="">
+				<div className="flex bg-[#94B447]">
 
 					<button 
 						className=""
