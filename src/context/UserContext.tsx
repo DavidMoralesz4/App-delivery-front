@@ -3,11 +3,13 @@ import { createContext, useContext, useState } from "react";
 // TIPOS PARA VALOR POR DEFECTO DE "UserContext"
 
 // v = visitor   u = user   r = restaurant  d = delivery   El resto son conjuntos de estos tipos
-export type UserRoleType = "v" | "u" | "r" | "d" | "ur" | "ud" | "urd"; 
+export type UserRolesType = "v" | "u" | "r" | "d" | "ur" | "ud" | "urd";
+export type UserActualRoleType =  "v" | "u" | "r" | "d";
 
 export type UserType = {
 	userName: string,
-	userRole: UserRoleType,
+	userRoles: UserRolesType,
+	userActualRole: UserActualRoleType
 }	
 
 export type UserDataType = {
@@ -20,7 +22,8 @@ export type UserDataType = {
 const userData: UserDataType = {
 	userData: {
 		userName: "",
-		userRole: "v",
+		userRoles: "v",
+		userActualRole: "v"
 	},
 	setUserData: () => { }
 };
@@ -36,15 +39,15 @@ type UserProviderProps = {
 }
 
 export function UserProvider({ children }: UserProviderProps) {
-	const [userRole, setUserData] = useState<UserType>({userName: "", userRole: "v"});
+	const [userData, setUserData] = useState<UserType>({userName: "", userRoles: "v", userActualRole: "v"});
 
-	const userData: UserDataType = {
-		userData: userRole,
+	const userDataContext: UserDataType = {
+		userData: userData,
 		setUserData: setUserData
 	};
 
 	return (
-		<UserContext.Provider value={userData}>
+		<UserContext.Provider value={userDataContext}>
 			{children}
 		</UserContext.Provider>
 	);

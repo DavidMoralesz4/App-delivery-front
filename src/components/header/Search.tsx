@@ -29,7 +29,6 @@ function Search( {handleSubmit}: SearchProps) {
 
 
 
-
 	return (
 		<Formik initialValues={initialValues} validationSchema={registerSchema} onSubmit={handleSubmit}>
 			<Form name="searchBar" action="" encType="multipart/form-data" className="flex">
