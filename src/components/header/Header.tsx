@@ -5,6 +5,7 @@ import Search from "./Search";
 function Header() {
 	const {userData} = useUserContext();
 
+
 	return (
 		<div className="flex">
 			<div className="">
@@ -14,13 +15,13 @@ function Header() {
 			</div>
 
 			{
-				userData.userActualRole === "v" || userData.userActualRole === "u"
+				userData.userActualRole === "v" || userData.userActualRole === "c"
 					?	<Search handleSubmit={() => console.log("Search Submit")} />
 					: 	null
 			}
 
 			<div className="">
-
+				
 			</div>
 
 			<div className="">

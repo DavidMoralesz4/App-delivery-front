@@ -2,9 +2,9 @@ import { createContext, useContext, useState } from "react";
 
 // TIPOS PARA VALOR POR DEFECTO DE "UserContext"
 
-// v = visitor   u = user   r = restaurant  d = delivery   El resto son conjuntos de estos tipos
-export type UserRolesType = "v" | "u" | "r" | "d" | "ur" | "ud" | "urd";
-export type UserActualRoleType =  "v" | "u" | "r" | "d";
+// v = visitor   c = client   r = restaurant  d = delivery   El resto son conjuntos de estos tipos
+export type UserRolesType = "v" | "c" | "r" | "d" | "cr" | "cd" | "crd";
+export type UserActualRoleType =  "v" | "c" | "r" | "d";
 
 export type UserType = {
 	userName: string,
