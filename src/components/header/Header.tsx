@@ -19,7 +19,7 @@ function Header( {handleLoginClick}: HeaderProps) {
       <header className="flex w-[100%]  justify-between items-center pt-5">
         <ul className="flex items-center gap-6">
           <li className="px-20 font-josefin text-[40px] font-bold relative">
-            <NavLink to="/">Eatsquality</NavLink>
+            <NavLink to="/inicio">Eatsquality</NavLink>
           </li>
         </ul>
 
