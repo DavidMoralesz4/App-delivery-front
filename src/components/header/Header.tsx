@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import NavbarSearch from "../NavbarSearch/NavbarSearch";
+import NavbarSearch from "./NavbarSearch/NavbarSearch";
 import UserProfile from "./UserProfile";
 import { useUserContext } from "../../context/UserContext";
+import MainNav from "./MainNav";
 
 type HeaderProps = {
   handleLoginClick: () => void
 }
 
 function Header( {handleLoginClick}: HeaderProps) {
-  const activeClassName = "underline underline-offset-4";
   const {userData} = useUserContext();
 
 
@@ -23,40 +23,10 @@ function Header( {handleLoginClick}: HeaderProps) {
           </li>
         </ul>
 
-        <ul className="flex justify-center items-center gap-5 pr-[120px]">
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/pide"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Pide
-            </NavLink>
-          </li>
+        <div className="">
+          <MainNav /> 
+        </div>
 
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/mi-orden"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Mi orden
-            </NavLink>
-          </li>
-
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/factura"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Factura
-            </NavLink>
-          </li>
-        </ul>
 
         <ul className="flex items-center gap-3 pr-20">
           <li className="font-josefin text-[26px]">
