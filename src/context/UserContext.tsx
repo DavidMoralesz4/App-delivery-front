@@ -39,7 +39,7 @@ type UserProviderProps = {
 }
 
 export function UserProvider({ children }: UserProviderProps) {
-	const [userData, setUserData] = useState<UserType>({userName: "Salvador Freixedo", userRoles: "crd", userActualRole: "c"});
+	const [userData, setUserData] = useState<UserType>({userName: "Salvador Freixedo", userRoles: "crd", userActualRole: "v"});
 
 	const userDataContext: UserDataType = {
 		userData: userData,

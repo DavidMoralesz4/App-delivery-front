@@ -1,7 +1,16 @@
 import Header from "../components/header/Header";
 import { Helmet } from "react-helmet";
+import { useState } from "react";
+import Login from "../components/forms/Login";
+
 
 function Home() {
+  const [isLoginVisible, setIsLoginVisible] = useState(false);
+
+  function showLogin() {
+    setIsLoginVisible(true);
+  }
+
   return (
     <>
       <Helmet>
@@ -9,10 +18,14 @@ function Home() {
       </Helmet>
 
       <header>
-        <Header />
+        <Header handleLoginClick={showLogin}/>
       </header>
 
-      <main></main>
+      <main>
+        {
+          isLoginVisible === true && <Login handleSubmit={() => console.log("Login Submit")}/>
+        }
+      </main>
 
       <footer></footer>
     </>

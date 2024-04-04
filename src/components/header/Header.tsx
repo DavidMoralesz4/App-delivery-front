@@ -2,9 +2,17 @@ import { NavLink } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import NavbarSearch from "../NavbarSearch/NavbarSearch";
 import UserProfile from "./UserProfile";
+import { useUserContext } from "../../context/UserContext";
 
-function Header() {
+type HeaderProps = {
+  handleLoginClick: () => void
+}
+
+function Header( {handleLoginClick}: HeaderProps) {
   const activeClassName = "underline underline-offset-4";
+  const {userData} = useUserContext();
+
+
 
   return (
     <>
@@ -58,10 +66,20 @@ function Header() {
 
         <ul className="flex items-center gap-3 pr-20">
           <li className="font-josefin text-[26px]">
-            <NavLink to="" id="email">
+            {/* <NavLink to="" id="email">
               Bienvenid@
-            </NavLink>
-            <UserProfile handleLogOutClick={() => console.log("Logout")}/>
+            </NavLink> */}
+
+            {
+              userData.userActualRole === "v"
+                ? <button type="button" onClick={handleLoginClick}
+                    className="bg-colorYellowBg rounded-full py-2 px-6"
+                  >
+                    Iniciar Sesión
+                  </button>
+
+                : <UserProfile handleLogOutClick={() => console.log("Logout")}/>
+            }
           </li>
 
           <li className="h-8 w-8">

@@ -22,10 +22,10 @@ function UserProfile( {handleLogOutClick}: UserProfileProps) {
 		optionsStyles = "invisible absolute top-[2rem]";
 	}
 
-	//CLASES PARA EL ROL SELECCIONADO, VARÍAN SEGÚN EL ESTADO showOptions
-	
-	let selectedRoleStyles = "text-xl text-[#60A5FA]";
+	//CLASES PARA EL BOTÓN QUE COINCIDA CON EL ROL SELECCIONADO
+		let selectedRoleStyles = "text-[#60A5FA]";
 
+	//BOTONES DE SELECCIÓN DE ROL
 	const clientRoleElement = useRef(null);
 	const restaurantRoleElement = useRef(null);
 	const deliveryRoleElement = useRef(null);
@@ -57,27 +57,27 @@ function UserProfile( {handleLogOutClick}: UserProfileProps) {
 
 			//ELIMINAMOS LA CLASE CON EL TEXTO RESALTADO DE TODOS LOS BOTONES DE CAMBIO DE ROL (PARA QUE NO SE VAYAN SUMANDO Y ACABEMOS CON TODOS RESALTADOS)
 			if (clientRoleElement.current !== null) {
-				(clientRoleElement.current as HTMLButtonElement).classList.remove("text-[#3B82F6]");
+				(clientRoleElement.current as HTMLButtonElement).classList.remove(selectedRoleStyles);
 			} 
 
 			if (restaurantRoleElement.current !== null) {
-				(restaurantRoleElement.current as HTMLButtonElement).classList.remove("text-[#3B82F6]");
+				(restaurantRoleElement.current as HTMLButtonElement).classList.remove(selectedRoleStyles);
 			} 
 
 			if (deliveryRoleElement.current !== null) {
-				(deliveryRoleElement.current as HTMLButtonElement).classList.remove("text-[#3B82F6]");
+				(deliveryRoleElement.current as HTMLButtonElement).classList.remove(selectedRoleStyles);
 			} 
 
 
 			//AÑADIMOS UNA CLASE CON EL TEXTO RESALTADO PARA EL BOTÓN DE CAMBIO DE ROL QUE COINCIDA CON EL ACTUAL
 			if (userData.userActualRole === "c" && clientRoleElement.current !== null){
-				(clientRoleElement.current as HTMLButtonElement).classList.add("text-[#3B82F6]");
+				(clientRoleElement.current as HTMLButtonElement).classList.add(selectedRoleStyles);
 
 			} else if (userData.userActualRole === "r" && restaurantRoleElement.current !== null){
-				(restaurantRoleElement.current as HTMLButtonElement).classList.add("text-[#3B82F6]");
+				(restaurantRoleElement.current as HTMLButtonElement).classList.add(selectedRoleStyles);
 
 			} else if (userData.userActualRole === "d" && deliveryRoleElement.current !== null){
-				(deliveryRoleElement.current as HTMLButtonElement).classList.add("text-[#3B82F6]");
+				(deliveryRoleElement.current as HTMLButtonElement).classList.add(selectedRoleStyles);
 			}
 		}
 	});
@@ -118,11 +118,11 @@ function UserProfile( {handleLogOutClick}: UserProfileProps) {
 											{
 												userData.userRoles === "cr" && (
 													<>
-														<button type="button" onClick={() => changeActualRole("c")} className="" >
+														<button type="button" onClick={() => changeActualRole("c")} className="text-lg" >
 															Cliente
 														</button>
 													
-														<button type="button" onClick={() => changeActualRole("r")} className="" >
+														<button type="button" onClick={() => changeActualRole("r")} className="text-lg" >
 															Restaurante
 														</button>
 													</>
@@ -132,11 +132,11 @@ function UserProfile( {handleLogOutClick}: UserProfileProps) {
 											{
 												userData.userRoles === "cd" && (
 													<>
-														<button type="button" onClick={() => changeActualRole("c")} className="" >
+														<button type="button" onClick={() => changeActualRole("c")} className="text-lg" >
 															Cliente
 														</button>
 													
-														<button type="button" onClick={() => changeActualRole("d")} className="" >
+														<button type="button" onClick={() => changeActualRole("d")} className="text-lg" >
 															Repartidor
 														</button>
 													</>
