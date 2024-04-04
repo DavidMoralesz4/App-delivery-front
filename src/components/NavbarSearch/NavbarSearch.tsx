@@ -6,7 +6,7 @@ const NavbarSearch = () => {
 
   return (
     <nav className="flex justify-center items-center ">
-      {userData.userActualRole === "v" || userData.userActualRole === "u" ? (
+      {userData.userActualRole === "v" || userData.userActualRole === "c" ? (
         <Search handleSubmit={() => console.log("Search Submit")} />
       ) : null}
     </nav>
