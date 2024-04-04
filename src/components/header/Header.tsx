@@ -19,7 +19,7 @@ function Header( {handleLoginClick}: HeaderProps) {
       <header className="flex w-[100%]  justify-between items-center pt-5">
         <ul className="flex items-center gap-6">
           <li className="px-20 font-josefin text-[40px] font-bold relative">
-            <NavLink to="/">Eatsquality</NavLink>
+            <NavLink to="/inicio">Eatsquality</NavLink>
           </li>
         </ul>
 
@@ -56,19 +56,10 @@ function Header( {handleLoginClick}: HeaderProps) {
               Factura
             </NavLink>
           </li>
-          {/* <div className="">
-            {userData.userActualRole === "v" ||
-            userData.userActualRole === "u" ? (
-              <Search handleSubmit={() => console.log("Search Submit")} />
-            ) : null}
-          </div> */}
         </ul>
 
         <ul className="flex items-center gap-3 pr-20">
           <li className="font-josefin text-[26px]">
-            {/* <NavLink to="" id="email">
-              Bienvenid@
-            </NavLink> */}
 
             {
               userData.userActualRole === "v"
@@ -80,6 +71,7 @@ function Header( {handleLoginClick}: HeaderProps) {
 
                 : <UserProfile handleLogOutClick={() => console.log("Logout")}/>
             }
+
           </li>
 
           <li className="h-8 w-8">
