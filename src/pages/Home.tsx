@@ -3,12 +3,11 @@ import { Helmet } from "react-helmet";
 import { useState } from "react";
 import Login from "../components/forms/Login";
 
-
 function Home() {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
 
   function showLogin() {
-    setIsLoginVisible(true);
+    setIsLoginVisible(!isLoginVisible);
   }
 
   return (
@@ -18,13 +17,13 @@ function Home() {
       </Helmet>
 
       <header>
-        <Header handleLoginClick={showLogin}/>
+        <Header handleLoginClick={showLogin} />
       </header>
 
       <main>
-        {
-          isLoginVisible === true && <Login handleSubmit={() => console.log("Login Submit")}/>
-        }
+        {isLoginVisible === true && (
+          <Login handleSubmit={() => console.log("Login Submit")} />
+        )}
       </main>
 
       <footer></footer>
