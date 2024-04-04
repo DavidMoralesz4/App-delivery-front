@@ -8,81 +8,140 @@ function MainNav() {
 
 	return (
 		<div className="">
+			<ul className="flex justify-center items-center gap-8 pr-[120px]">
 
-			{/* // OPCIONES DE VISITANTE	 */}
-			{
-				userData.userActualRole === "v" && (
-					<ul className="flex justify-center items-center gap-5 pr-[120px]">
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/pizza"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Pizzas
-            </NavLink>
-          </li>
+				{/* // OPCIONES DE VISITANTE	 */}
+				{
+					userData.userActualRole === "v" && (
+						<>
+							<li className="font-josefin text-[19px]">
+								<NavLink
+									to="/inicio/pizza"
+									className={({ isActive }) =>
+										isActive ? activeClassName : undefined
+									}
+								>
+									Pizzas
+								</NavLink>
+							</li>
+		
+							<li className="font-josefin text-[19px]">
+								<NavLink
+									to="/inicio/hamburguesas"
+									className={({ isActive }) =>
+										isActive ? activeClassName : undefined
+									}
+								>
+									Hamburguesas
+								</NavLink>
+							</li>
 
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/hamburguesas"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Hamburguesas
-            </NavLink>
-          </li>
+							<li className="font-josefin text-[19px]">
+								<NavLink
+									to="/inicio/asiaticas"
+									className={({ isActive }) =>
+										isActive ? activeClassName : undefined
+									}
+								>
+									Comida Asiática
+								</NavLink>
+							</li>
+						</>
+					)
+				}
 
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/conocenos"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Conócenos
-            </NavLink>
-          </li>
-        </ul>
-				)
-			}
-			<ul className="flex justify-center items-center gap-5 pr-[120px]">
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/pide"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Pide
-            </NavLink>
-          </li>
 
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/mi-orden"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Mi orden
-            </NavLink>
-          </li>
+				{/* // OPCIONES DE CLIENTE	 */}
+				{
+					userData.userActualRole === "c" && (
+						<>
+							<li className="font-josefin text-[19px]">
+								<NavLink
+									to="/inicio/pizza"
+									className={({ isActive }) =>
+										isActive ? activeClassName : undefined
+									}
+								>
+									Pizzas
+								</NavLink>
+							</li>
+		
+							<li className="font-josefin text-[19px]">
+								<NavLink
+									to="/inicio/hamburguesas"
+									className={({ isActive }) =>
+										isActive ? activeClassName : undefined
+									}
+								>
+									Hamburguesas
+								</NavLink>
+							</li>
+		
+							<li className="font-josefin text-[19px]">
+								<NavLink
+									to="/mis-pedidos"
+									className={({ isActive }) =>
+										isActive ? activeClassName : undefined
+									}
+								>
+									Mis Pedidos
+								</NavLink>
+							</li>
+						</>
+					)
+				}
 
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/factura"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Factura
-            </NavLink>
-          </li>
-        </ul>
-			
+
+				{/* // OPCIONES DE RESTAURANTE	 */}
+				{
+					userData.userActualRole === "r" && (
+						<>
+							<li className="font-josefin text-[19px]">
+								<NavLink
+									to="/mi-restaurante"
+									className={({ isActive }) =>
+										isActive ? activeClassName : undefined
+									}
+								>
+									Mi Restaurante
+								</NavLink>
+							</li>
+		
+							<li className="font-josefin text-[19px]">
+								<NavLink
+									to="/pedidos-restaurante"
+									className={({ isActive }) =>
+										isActive ? activeClassName : undefined
+									}
+								>
+									Pedidos Recibidos
+								</NavLink>
+							</li>
+						</>
+					)
+				}
+
+
+				{/* // OPCIONES DE DELIVERY	 */}
+				{
+					userData.userActualRole === "d" && (
+						<>
+							<li className="font-josefin text-[19px]">
+								<NavLink
+									to="/pedidos-delivery"
+									className={({ isActive }) =>
+										isActive ? activeClassName : undefined
+									}
+								>
+									Pedidos Recibidos
+								</NavLink>
+							</li>
+						</>
+					)
+				}
+
+
+			</ul>
 		</div>
 	)
 }
