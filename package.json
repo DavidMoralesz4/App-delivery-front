@@ -16,7 +16,6 @@
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
-    "@types/react-helmet": "^6.1.11",
     "formik": "^2.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,8 +25,10 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "@types/material-ui": "^0.21.17",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "@types/react-helmet": "^6.1.11",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
