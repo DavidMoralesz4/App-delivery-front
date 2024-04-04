@@ -8,7 +8,7 @@ function Home() {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
 
   function showLogin() {
-    setIsLoginVisible(true);
+    setIsLoginVisible(!isLoginVisible)
   }
 
   return (
