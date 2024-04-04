@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import NavbarSearch from "../NavbarSearch/NavbarSearch";
+import UserProfile from "./UserProfile";
 
 function Header() {
   const activeClassName = "underline underline-offset-4";
@@ -60,6 +61,7 @@ function Header() {
             <NavLink to="" id="email">
               Bienvenid@
             </NavLink>
+            <UserProfile handleLogOutClick={() => console.log("Logout")}/>
           </li>
 
           <li className="h-8 w-8">
