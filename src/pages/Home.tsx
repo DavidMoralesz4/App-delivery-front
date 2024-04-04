@@ -1,26 +1,22 @@
-import Header from "../components/header/Header"
+import Header from "../components/header/Header";
 import { Helmet } from "react-helmet";
 
 function Home() {
-	return (
-	<>
-		<Helmet>
-			<title>Eatsquality - Inicio</title>
-		</Helmet>
+  return (
+    <>
+      <Helmet>
+        <title>Eatsquality - Inicio</title>
+      </Helmet>
 
-		<header>
-			<Header />
-		</header>
+      <header>
+        <Header />
+      </header>
 
-		<main>
+      <main></main>
 
-		</main>
-
-		<footer>
-			
-		</footer>
-	</>
-	)
+      <footer></footer>
+    </>
+  );
 }
 
-export default Home
+export default Home;
