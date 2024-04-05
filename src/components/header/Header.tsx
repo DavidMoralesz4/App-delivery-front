@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import NavbarSearch from "../NavbarSearch/NavbarSearch";
+import NavbarSearch from "./NavbarSearch/NavbarSearch";
 import UserProfile from "./UserProfile";
 import { useUserContext } from "../../context/UserContext";
+import MainNav from "./MainNav";
 
 type HeaderProps = {
   handleLoginClick: () => void
 }
 
 function Header( {handleLoginClick}: HeaderProps) {
-  const activeClassName = "underline underline-offset-4";
   const {userData} = useUserContext();
 
 
@@ -17,58 +17,20 @@ function Header( {handleLoginClick}: HeaderProps) {
   return (
     <>
       <header className="flex w-[100%]  justify-between items-center pt-5">
-        <ul className="flex items-center gap-6">
+        <ul className="flex items-center">
           <li className="px-20 font-josefin text-[40px] font-bold relative">
-            <NavLink to="/">Eatsquality</NavLink>
+            <NavLink to="/inicio">Eatsquality</NavLink>
           </li>
         </ul>
 
-        <ul className="flex justify-center items-center gap-5 pr-[120px]">
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/pide"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Pide
-            </NavLink>
-          </li>
+        <div className="flex flex-col items-center">
+          <MainNav />
+          <NavbarSearch /> 
+        </div>
 
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/mi-orden"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Mi orden
-            </NavLink>
-          </li>
-
-          <li className="font-josefin text-[19px]">
-            <NavLink
-              to="/factura"
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Factura
-            </NavLink>
-          </li>
-          {/* <div className="">
-            {userData.userActualRole === "v" ||
-            userData.userActualRole === "u" ? (
-              <Search handleSubmit={() => console.log("Search Submit")} />
-            ) : null}
-          </div> */}
-        </ul>
 
         <ul className="flex items-center gap-3 pr-20">
           <li className="font-josefin text-[26px]">
-            {/* <NavLink to="" id="email">
-              Bienvenid@
-            </NavLink> */}
 
             {
               userData.userActualRole === "v"
@@ -80,6 +42,7 @@ function Header( {handleLoginClick}: HeaderProps) {
 
                 : <UserProfile handleLogOutClick={() => console.log("Logout")}/>
             }
+
           </li>
 
           <li className="h-8 w-8">
@@ -90,7 +53,6 @@ function Header( {handleLoginClick}: HeaderProps) {
           </li>
         </ul>
       </header>
-      <NavbarSearch />
     </>
   );
 }

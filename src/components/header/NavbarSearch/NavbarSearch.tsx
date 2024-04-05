@@ -1,5 +1,5 @@
-import { useUserContext } from "../../context/UserContext";
-import Search from "../header/Search";
+import { useUserContext } from "../../../context/UserContext";
+import Search from "../Search";
 
 const NavbarSearch = () => {
   const { userData } = useUserContext();
