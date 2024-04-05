@@ -1,7 +1,9 @@
 import Header from "../components/header/Header";
+import Login from "../components/forms/Login";
+import Layout from "../components/layout/Layout";
+
 import { Helmet } from "react-helmet";
 import { useState } from "react";
-import Login from "../components/forms/Login";
 
 function Home() {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
@@ -12,21 +14,26 @@ function Home() {
 
   return (
     <>
-      <Helmet>
-        <title>Eatsquality - Inicio</title>
-      </Helmet>
+      <Layout>
+        <Helmet>
+          <title>Eatsquality - Inicio</title>
+        </Helmet>
 
-      <header>
-        <Header handleLoginClick={showLogin} />
-      </header>
+        <div className="h-[300px] w-[400px] rounded-br-[630px] bg-colorYellowBg absolute shadow-lg"></div>
 
-      <main>
-        {isLoginVisible === true && (
-          <Login handleSubmit={() => console.log("Login Submit")} />
-        )}
-      </main>
+        <header>
+          <Header handleLoginClick={showLogin} />
+        </header>
 
-      <footer></footer>
+        <main>
+          {isLoginVisible === true && (
+            <div className="flex justify-center items-center">
+              <Login handleSubmit={() => console.log("Login Submit")} />
+            </div>
+          )}
+        </main>
+        <footer></footer>
+      </Layout>
     </>
   );
 }

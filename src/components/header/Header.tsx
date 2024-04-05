@@ -6,13 +6,11 @@ import { useUserContext } from "../../context/UserContext";
 import MainNav from "./MainNav";
 
 type HeaderProps = {
-  handleLoginClick: () => void
-}
+  handleLoginClick: () => void;
+};
 
-function Header( {handleLoginClick}: HeaderProps) {
-  const {userData} = useUserContext();
-
-
+function Header({ handleLoginClick }: HeaderProps) {
+  const { userData } = useUserContext();
 
   return (
     <>
@@ -25,24 +23,22 @@ function Header( {handleLoginClick}: HeaderProps) {
 
         <div className="flex flex-col items-center">
           <MainNav />
-          <NavbarSearch /> 
+          <NavbarSearch />
         </div>
 
-
         <ul className="flex items-center gap-3 pr-20">
-          <li className="font-josefin text-[26px]">
-
-            {
-              userData.userActualRole === "v"
-                ? <button type="button" onClick={handleLoginClick}
-                    className="bg-colorYellowBg rounded-full py-2 px-6"
-                  >
-                    Iniciar Sesión
-                  </button>
-
-                : <UserProfile handleLogOutClick={() => console.log("Logout")}/>
-            }
-
+          <li className="font-josefin text-[20px]">
+            {userData.userActualRole === "v" ? (
+              <button
+                type="button"
+                onClick={handleLoginClick}
+                className="bg-colorYellowBg rounded-full py-1 px-6"
+              >
+                Iniciar Sesión
+              </button>
+            ) : (
+              <UserProfile handleLogOutClick={() => console.log("Logout")} />
+            )}
           </li>
 
           <li className="h-8 w-8">

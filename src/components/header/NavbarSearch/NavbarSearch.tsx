@@ -5,7 +5,7 @@ const NavbarSearch = () => {
   const { userData } = useUserContext();
 
   return (
-    <nav className="flex justify-center items-center ">
+    <nav className="flex justify-center items-center">
       {userData.userActualRole === "v" || userData.userActualRole === "c" ? (
         <Search handleSubmit={() => console.log("Search Submit")} />
       ) : null}
