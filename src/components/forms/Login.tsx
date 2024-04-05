@@ -65,7 +65,7 @@ function Login({ handleSubmit }: LoginProps) {
         <div className="flex justify-center items-center absolute inset-0 backdrop-blur-sm ">
           <div
             className="flex justify-center items-center flex-col bg-colorYellowBg
-      w-[100%] h-[70vh] m-4 p-8 rounded-[20px] drop-shadow-2xl relative sm:w-[470px] mt-[20px] sm:h-[555px] 
+      w-[100%] h-[70vh] m-4 p-8 rounded-[30px] drop-shadow-2xl relative sm:w-[600px] mt-[20px] sm:h-[560px] 
       "
           >
             <button
@@ -95,8 +95,8 @@ function Login({ handleSubmit }: LoginProps) {
                     placeholder="Correo electronio"
                     type="text"
                     name="userEmail"
-                    className="m-1 px-2 rounded-[10px] outline-none shadow-xl bg-[#F2F2F2]
-                font-josefin sm:h-[35px] sm:w-[240px] 
+                    className="m-1 px-2 rounded-[30px] outline-none shadow-xl bg-[#F2F2F2]
+                font-josefin sm:h-[35px] sm:w-[330px] 
                 "
                   />
                   <ErrorMessage name="userEmail">
@@ -113,8 +113,8 @@ function Login({ handleSubmit }: LoginProps) {
                     placeholder="Contrasena"
                     type={passwordVisible ? "password" : "text"}
                     name="userPassword"
-                    className="m-1 px-2 rounded-[10px] outline-none shadow-xl bg-[#F2F2F2]
-                font-josefin sm:h-[35px] sm:w-[240px] 
+                    className="m-1 px-2 rounded-[30px] outline-none shadow-xl bg-[#F2F2F2]
+                font-josefin sm:h-[35px] sm:w-[330px] 
                 "
                   />
                   <ErrorMessage name="userPassword">
@@ -152,7 +152,7 @@ function Login({ handleSubmit }: LoginProps) {
                 </div>
 
                 <button
-                  className="bg-[#FDF4E3] rounded-[10px] p-2 font-josefin shadow-lg mt-10
+                  className="bg-[#FDF4E3] rounded-[10px] p-2 font-josefin shadow-lg mt-6
               text-[14px] h-9 sm:text-[18px] sm:w-[160px] sm:h-[40px]
               "
                   type="submit"
@@ -160,12 +160,16 @@ function Login({ handleSubmit }: LoginProps) {
                   Iniciar Sesion
                 </button>
 
-                <div className="flex justify-center items-center gap-10 mt-5 sm:gap-20">
+                <div className="flex justify-center items-center gap-10 mt-2 sm:gap-3">
                   <div className="flex bg-colorYellowBg shadow-lg p-1 cursor-pointer sm:p-3">
                     <GoogleIcon />
                     <p className="font-josefin">Google</p>
                   </div>
-
+                  <div className="flex justify-center items-center">
+                    <div className="flex justify-center items-center w-[300%] border border-[#FDF4E3]"></div>
+                    <div className=" flex justify-center items-center w-[160px] h-[20px] border-[#FDF4E3] rounded-[150%] shadow-lg  bg-[#FFCF71]"></div>
+                    <div className="flex justify-center items-center w-[280%] border border-[#FDF4E3]"></div>
+                  </div>
                   <div className="flex bg-colorYellowBg shadow-lg p-1 cursor-pointer sm:p-3">
                     <FacebookIcon />
                     <p className="font-josefin">Facebook</p>
