@@ -8,9 +8,10 @@ export default {
       }
     },
     colors: {
-      colorYellowBg: "#FFC657",
+      colorYellowBg: "#FFCB66",
       shadow: "#000000",
-      errorMsg: "#D60404"
+      errorMsg: "#D60404",
+      blurEffect: "#D9D9D9"
     }
   },
   plugins: []

@@ -4,7 +4,8 @@ import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import VisibilityOffOutlinedIcon from "@mui/icons-material/VisibilityOffOutlined";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 type LoginProps = {
@@ -14,6 +15,8 @@ type LoginProps = {
 function Login({ handleSubmit }: LoginProps) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
+  const [isFormOpen, setIsFormOpen] = useState(true);
+  const formRef = useRef<HTMLDivElement>(null);
 
   //CONFIGURACIÓN PARA YUP Y FORMIK - COMIENZO
 
@@ -22,7 +25,7 @@ function Login({ handleSubmit }: LoginProps) {
     userPassword: ""
   };
 
-  const registerSchema = Yup.object({
+  const loginSchema = Yup.object({
     userEmail: Yup.string()
       .required("Debes completar este campo")
       .email("El formato no coincide con un email")
@@ -34,145 +37,163 @@ function Login({ handleSubmit }: LoginProps) {
       .min(8, "Al menos 8 caracteres")
   });
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (formRef.current && !formRef.current.contains(event.target as Node)) {
+        setIsFormOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   //CONFIGURACIÓN PARA YUP Y FORMIK - FIN
 
   // Cambia la visibilidad del password
 
-  function setPasswordVisibility() {
-    const passwordElement = document.getElementById(
-      "userPassword"
-    ) as HTMLInputElement;
-
-    if (passwordElement.type === "password") {
-      passwordElement.type = "text";
-      setPasswordVisible(true);
-    } else {
-      passwordElement.type = "password";
-      setPasswordVisible(false);
-    }
-  }
+  const handleView = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   return (
-    <div
-      className="flex justify-center items-center flex-col bg-colorYellowBg h-[100%] mt-10 rounded-[40px] shadow-xl w-[600px] p-32 
-	  "
-    >
-      <h1 className="text-4xl font-medium drop-shadow-lg relative shadow-shadow font-josefin top-[-50px]">
-        Iniciar Sesión
-      </h1>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={registerSchema}
-        onSubmit={handleSubmit}
-      >
-        <Form
-          name="loginForm"
-          action=""
-          encType="multipart/form-data"
-          //   className="flex items-center justify-center"
-        >
-          <div className="flex justify-center items-center flex-col relative top-[-10px]">
-            <div className="">
-              {/* <label htmlFor="userEmail"></label> */}
-              <Field
-                type="email"
-                id="userEmail"
-                name="userEmail"
-                placeholder="Correo Electrónico"
-                className="flex flex-col items-center justify-center bg-slate-500 m-2 rounded-[30px] px-4
-				w-[322px] h-[38px] outline-none shadow-lg font-josefin"
-              />
-              <div className="flex items-center justify-center ">
-                <ErrorMessage name="userEmail">
-                  {errorMsg => (
-                    <p className="text-errorMsg font-josefin">{errorMsg}</p>
-                  )}
-                </ErrorMessage>
-              </div>
-            </div>
-            <div className="">
-              {/* <label htmlFor="userPassword"></label> */}
-              <Field
-                type="password"
-                id="userPassword"
-                name="userPassword"
-                placeholder="Contraseña"
-                className="flex flex-col bg-slate-500 m-2 rounded-[30px] px-4 w-[322px] h-[38px] outline-none shadow-lg font-josefin"
-              />
-              <div className="flex items-center justify-center ">
-                <ErrorMessage name="userPassword">
-                  {errorMsg => (
-                    <p className="text-errorMsg font-josefin">{errorMsg}</p>
-                  )}
-                </ErrorMessage>
-              </div>
-            </div>
-
-            {/* Seccion 'Mostrar y ocultar contraseña' */}
-            <div className="flex justify-center items-center flex-row relavite top-[70px]">
-              <button
-                type="button"
-                onClick={setPasswordVisibility}
-                className="flex justify-center items-center"
-              >
-                {passwordVisible === false ? (
-                  <RemoveRedEyeOutlinedIcon />
-                ) : (
-                  <VisibilityOffOutlinedIcon />
-                )}
-              </button>
-
-              <span onClick={setPasswordVisibility} className="px-2">
-                {passwordVisible ? (
-                  <p className="font-josefin">Ocultar contraseña</p>
-                ) : (
-                  <p className="font-josefin">Mostar contraseña</p>
-                )}
-              </span>
-            </div>
-
+    <>
+      {isFormOpen && (
+        <div className="flex justify-center items-center absolute inset-0 backdrop-blur-sm ">
+          <div
+            className="flex justify-center items-center flex-col bg-colorYellowBg
+      w-[100%] h-[70vh] m-4 p-8 rounded-[20px] drop-shadow-2xl relative sm:w-[470px] mt-[20px] sm:h-[555px] 
+      "
+          >
             <button
-              className="w-[166px] h-[38px] rounded-[10px] text-[18px] bg-[#FDF4E3] shadow-lg 
-			  font-josefin font-medium flex justify-center items-center relative top-[35px]"
-              type="submit"
+              onClick={() => setIsFormOpen(!isFormOpen)}
+              className="text-[20px] font-josefin  text-[#432C00] pl-[40px] mt-[-50px] p-10 hover:text-blurEffect transition delay-150 duration-300 ease-in-out"
             >
-              Inciar Sesión
+              <CloseIcon />
             </button>
-          </div>
+            <h1 className="font-josefin text-[27px] mt-[-10px] sm:text-[40px]">
+              Iniciar Sesion
+            </h1>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={loginSchema}
+              // onSubmit={handleSubmit}
+              onSubmit={(values, { setSubmitting }) => {
+                setTimeout(() => {
+                  alert(JSON.stringify(values, null, 2));
+                  setSubmitting(false);
+                  setIsFormOpen(false);
+                }, 0);
+              }}
+            >
+              <Form className="flex items-center justify-center flex-col mt-12">
+                <div>
+                  <Field
+                    placeholder="Correo electronio"
+                    type="text"
+                    name="userEmail"
+                    className="m-1 px-2 rounded-[10px] outline-none shadow-xl bg-[#F2F2F2]
+                font-josefin sm:h-[35px] sm:w-[240px] 
+                "
+                  />
+                  <ErrorMessage name="userEmail">
+                    {errorMsg => (
+                      <p className="text-[12px] text-center text-errorMsg font-josefin sm:text-[16px]">
+                        {errorMsg}
+                      </p>
+                    )}
+                  </ErrorMessage>
+                </div>
 
-          <div className="flex justify-between relative top-[60px]">
-            <div className="flex justify-center items-center w-28 h-12 shadow-xl cursor-pointer bg-[#FFCF71] font-josefin">
-              <GoogleIcon />
-              <p className="px-1">Google</p>
-            </div>
+                <div>
+                  <Field
+                    placeholder="Contrasena"
+                    type={passwordVisible ? "password" : "text"}
+                    name="userPassword"
+                    className="m-1 px-2 rounded-[10px] outline-none shadow-xl bg-[#F2F2F2]
+                font-josefin sm:h-[35px] sm:w-[240px] 
+                "
+                  />
+                  <ErrorMessage name="userPassword">
+                    {errorMsg => (
+                      <p className="text-[12px] text-center text-errorMsg font-josefin sm:text-[16px]">
+                        {errorMsg}
+                      </p>
+                    )}
+                  </ErrorMessage>
+                </div>
+                <div className="flex mt-3 justify-center items-center">
+                  <button
+                    type="button"
+                    onClick={handleView}
+                    className="flex justify-center items-center px-1"
+                  >
+                    {passwordVisible ? (
+                      <RemoveRedEyeOutlinedIcon />
+                    ) : (
+                      <VisibilityOffOutlinedIcon />
+                    )}
+                  </button>
 
-            <div className="flex justify-center items-center w-28 h-12 shadow-xl cursor-pointer bg-[#FFCF71] font-josefin">
-              <FacebookIcon />
-              <p className="px-1">Facebook</p>
-            </div>
-          </div>
+                  <span onClick={handleView} className="cursor-pointer">
+                    {passwordVisible ? (
+                      <p className="font-josefin text-[14px] sm:text-[18px]">
+                        Ocultar contraseña
+                      </p>
+                    ) : (
+                      <p className="font-josefin text-[14px] sm:text-[18px]">
+                        Mostar contraseña
+                      </p>
+                    )}
+                  </span>
+                </div>
 
-          <div className="flex justify-between items-center w-[80%] h-[40px] space-x-5 ">
-            <div className="w-[460%] border border-[#FDF4E3]"></div>
-            <div className="w-[190px] h-[20px] border-[#FDF4E3] rounded-[150%] shadow-lg  bg-[#FFCF71]"></div>
-            <div className="w-[260%] border border-[#FDF4E3]"></div>
-          </div>
+                <button
+                  className="bg-[#FDF4E3] rounded-[10px] p-2 font-josefin shadow-lg mt-10
+              text-[14px] h-9 sm:text-[18px] sm:w-[160px] sm:h-[40px]
+              "
+                  type="submit"
+                >
+                  Iniciar Sesion
+                </button>
 
-          <div className="flex justify-center items-center relative top-[60px] font-josefin">
-            <p className="text-[#01242F8F] text-[18px]">
-              Nuevo en Eatsquality?
-              <span
-                className="text-[#05607C] cursor-pointer"
-                onClick={() => navigate("/register")}
-              >
-                {" "}
-                Registrate
-              </span>{" "}
-            </p>
+                <div className="flex justify-center items-center gap-10 mt-5 sm:gap-20">
+                  <div className="flex bg-colorYellowBg shadow-lg p-1 cursor-pointer sm:p-3">
+                    <GoogleIcon />
+                    <p className="font-josefin">Google</p>
+                  </div>
+
+                  <div className="flex bg-colorYellowBg shadow-lg p-1 cursor-pointer sm:p-3">
+                    <FacebookIcon />
+                    <p className="font-josefin">Facebook</p>
+                  </div>
+                </div>
+
+                <div className="">
+                  <p
+                    className="flex-row text-center text-[14px] 
+              font-josefin mt-12 sm:text-[16px]
+              "
+                  >
+                    Nuevo en Eatsquality?
+                    <span
+                      className="text-[#432C00] cursor-pointer"
+                      onClick={() => navigate("/register")}
+                    >
+                      {" "}
+                      Registrate
+                    </span>{" "}
+                  </p>
+                </div>
+              </Form>
+            </Formik>
           </div>
-        </Form>
-      </Formik>
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 
